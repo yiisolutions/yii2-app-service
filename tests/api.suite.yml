@@ -1,0 +1,9 @@
+class_name: ApiTester
+modules:
+    enabled:
+        - Asserts
+        - REST:
+            depends: Yii2
+        - Yii2:
+            part: [orm]
+            cleanup: true
