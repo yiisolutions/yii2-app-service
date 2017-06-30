@@ -1,5 +1,7 @@
 <?php
 
+use yii\helpers\ArrayHelper;
+
 require(__DIR__ . '/environment.php');
 
 $params = require(__DIR__ . '/environments/' . ENVIRONMENT . '/params.php');
@@ -16,7 +18,20 @@ $config = [
             'class' => 'app\modules\v1\Module',
         ],
     ],
-    'components' => $components,
+    'components' => ArrayHelper::merge([
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages',
+                    'sourceLanguage' => 'en-US',
+                    'fileMap' => [
+                        'app' => 'app.php',
+                    ],
+                ],
+            ],
+        ],
+    ], $components),
     'params' => $params,
     'controllerMap' => [
         'help' => 'yii\console\controllers\HelpController',

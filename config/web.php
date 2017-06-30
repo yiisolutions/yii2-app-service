@@ -50,6 +50,18 @@ return [
             'showScriptName' => false,
             'rules' => require(__DIR__ . '/url-rules.php'),
         ],
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages',
+                    'sourceLanguage' => 'en-US',
+                    'fileMap' => [
+                        'app' => 'app.php',
+                    ],
+                ],
+            ],
+        ],
     ], $components),
     'params' => $params,
 ];
